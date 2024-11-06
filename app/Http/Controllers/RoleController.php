@@ -1,0 +1,83 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Role;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class RoleController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $roles=Role::all();
+        return view('role',['roles'=>$roles]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|max:25',
+        ]);
+
+        $role = Role::create($data);
+
+        return redirect()->back()->with('success', "Ma'lumot muvaffaqiyatli qo'shildi");
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Role $role)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Role $role)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Role $role,int $id)
+    {
+        //dd($id);
+        $role=Role::findOrFail($id);
+        $role->name=$request->name;
+        $role->save();
+        return redirect()->back()->with('success', "Ma'lumot muvaffaqiyatli yangilandi");
+
+        
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Role $role,int $id)
+    {
+        //dd($id);
+        $role=Role::findOrFail($id);
+        $role->delete();
+        return redirect()->back()->with('success', "Ma'lumot muvaffaqiyatli o'chirildi");
+        
+    }
+}
