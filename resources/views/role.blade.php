@@ -89,6 +89,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
+                                    <th>Is_active</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr>
@@ -98,6 +99,14 @@
                                 <tr>
                                     <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
+                                    <td>
+                                        @if($role->is_active)
+                                            <a href="isactive/{{$role->id}}" class="btn btn-primary">True</a>
+                                        @else
+                                            <a href="noactive/{{$role->id}}"  class="btn btn-danger">False</a>
+                                        @endif
+                                    </td>
+                                    
                                     <td>
                                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $role->id }}">
                                             Update

@@ -40,11 +40,13 @@ Route::post('createkitob',[KitobController::class,'create']);
 Route::get('telefon',[TelefonController::class,'telefon'])->middleware(Check::class.':admin,bugalter');
 Route::post('createtelefon',[TelefonController::class,'create']);
 
-Route::get('universitet',[UniversitetController::class,'universitet'])->middleware(Check::class.':moderator');
+Route::get('universitet',[UniversitetController::class,'universitet'])->middleware(Check::class.':moderator,hr');
 Route::post('createuniversitet',[UniversitetController::class,'create']);
 
 Route::get('roles',[RoleController::class,'index'])->middleware(Check::class.':admin');
 Route::post('createrole',[RoleController::class,'create']);
 Route::put('updaterole/{id}',[RoleController::class,'update']);
 Route::get('deleterole/{id}',[RoleController::class,'destroy']);
+Route::get('isactive/{id}',[RoleController::class,'isactive']);
+Route::get('noactive/{id}',[RoleController::class,'noactive']);
 

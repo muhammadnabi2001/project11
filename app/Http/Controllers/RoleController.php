@@ -80,4 +80,20 @@ class RoleController extends Controller
         return redirect()->back()->with('success', "Ma'lumot muvaffaqiyatli o'chirildi");
         
     }
+    public function isactive(int $id)
+    {
+        $role=Role::findOrFail($id);
+        //dd($role);
+        $role->is_active=0;
+        $role->save();
+        return redirect()->back()->with('success', "Ma'lumot muvaffaqiyatli yangilandi");
+    }
+    public function noactive(int $id)
+    {
+        $role=Role::findOrFail($id);
+        //dd($role);
+        $role->is_active=1;
+        $role->save();
+        return redirect()->back()->with('success', "Ma'lumot muvaffaqiyatli yangilandi");
+    }
 }
