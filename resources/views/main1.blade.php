@@ -125,6 +125,8 @@
                                 </p>
                             </a>
                         </li>
+                        @if(Auth::user()->roles->contains('name','admin'))
+                            
                         <li class="nav-item">
                             <a href="/users" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>
@@ -133,6 +135,7 @@
                                 </p>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a href="/kitob" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>
@@ -157,6 +160,8 @@
                                 </p>
                             </a>
                         </li>
+                        @if(Auth::user()->roles->contains('name','admin'))
+                            
                         <li class="nav-item">
                             <a href="/roles" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>
@@ -165,6 +170,7 @@
                                 </p>
                             </a>
                         </li>
+                        @endif
                         <li class="nav-item">
                             <a href="/talaba" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>

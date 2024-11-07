@@ -34,13 +34,13 @@ Route::put('/updateuser/{id}',[UserController::class,'update']);
 Route::get('talaba',[TalabaController::class,'talaba'])->middleware(Check::class.':admin,hr');
 Route::post('createtalaba',[TalabaController::class,'create']);
 
-Route::get('kitob',[KitobController::class,'kitob'])->middleware(Check::class.':moderator');
+Route::get('kitob',[KitobController::class,'kitob'])->middleware(Check::class.':admin,moderator');
 Route::post('createkitob',[KitobController::class,'create']);
 
 Route::get('telefon',[TelefonController::class,'telefon'])->middleware(Check::class.':admin,bugalter');
 Route::post('createtelefon',[TelefonController::class,'create']);
 
-Route::get('universitet',[UniversitetController::class,'universitet'])->middleware(Check::class.':moderator,hr');
+Route::get('universitet',[UniversitetController::class,'universitet'])->middleware(Check::class.':admin,moderator,hr');
 Route::post('createuniversitet',[UniversitetController::class,'create']);
 
 Route::get('roles',[RoleController::class,'index'])->middleware(Check::class.':admin');

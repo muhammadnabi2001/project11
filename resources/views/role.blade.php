@@ -97,6 +97,8 @@
                             <tbody id="userTableBody">
                                 @foreach($roles as $role)
                                 <tr>
+                                    @if($role->name !=='admin')
+                                        
                                     <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>
@@ -139,6 +141,7 @@
                                     </td>
                                     
                     <td><a href="deleterole/{{$role->id}}" class="btn btn-danger">Delete</a></td>
+                    @endif
                     </tr>
                     @endforeach
                     </tbody>

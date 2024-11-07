@@ -109,6 +109,7 @@
                             </thead>
                             <tbody id="userTableBody">
                                 @foreach($users as $user)
+                                @if(!$user->roles->contains('name', 'admin'))
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
@@ -134,7 +135,6 @@
                                                     <div class="modal-body">
                                                         <ul class="list-group">
                                                             @foreach($user->roles as $role)
-                                                            <!-- $user->roles foydalanuvchi rollari uchun -->
                                                             <li class="list-group-item">{{ $role->name }}</li>
                                                             @endforeach
                                                         </ul>
@@ -178,8 +178,7 @@
                                                                                 {{ $role->name }}
                                                                             </option>
                                                                         @endforeach
-                                                                    </select>
-                                                                    
+                                                                    </select>            
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3">
@@ -199,6 +198,7 @@
                                     
                     <td><a href="deleteuser/{{$user->id}}" class="btn btn-danger">Delete</a></td>
                     </tr>
+                    @endif
                     @endforeach
                     </tbody>
                     </table>
